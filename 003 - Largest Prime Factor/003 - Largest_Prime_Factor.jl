@@ -1,3 +1,4 @@
+num = 600851475143
 sqr = sqrt(num)
 c = 3
 max = num
