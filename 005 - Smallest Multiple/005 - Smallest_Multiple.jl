@@ -7,4 +7,4 @@ function mapper(arr)
     arr
 end
 
-reduce(*, mapper(collect(2:20)))
+println(reduce(*, mapper(collect(2:20))))
