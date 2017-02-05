@@ -42,4 +42,85 @@ in(("a", 1), dict)              # or check if it contains the key tuple (key-val
 
 s = Set([2, 3, 5])              # Sets for unique iterables (or start with an empty Set)
 union, intersect, setdiff       # mathematical Set functions
+
+# indentation is not important, blocks end with 'end' keyword
+if ...
+elseif ...
+else ...
+end
+
+# we can iterate over arrays, dictionaries, sets and strings
+for s in ["Hello", "World", "!"]
+end
+
+for s=["Hello", "World", "!"]
+end
+
+# functions return last statement
+function add(a, b)
+  a + b
+end
+
+# inline (compact) functions
+add(a, b) => a + b
+
+# splat (destructuring)
+add([23, 19]...) # add(23, 19)
+
+# default argument values
+add(a = 23, b = 19) => a + b
+
+# keyed arguments (can be called with argument name). must be defined after ';'
+# cannot be inline, all keyed arguments must have a default value and parameters need to be called explicitly
+function add(; a = 23, b = 19)
+  a + b
+end
+
+add(a = 4)          # = 23
+
+# anonymous functions (lambda syntax)
+add = (a, b) -> a + b
+
+# IIFE
+((a, b) -> a + b)(23, 19)
+
+# currying
+function adder(a)
+  b -> a + b
+end
+
+addThree = adder(3)
+addThree(19)        # = 23
+
+# built-in higher-order functions
+filter(n -> n > 42, collect(1:100))       # = 43, 44, ..., 100
+map(addThree, [2, 3, 5, 7])               # = 5, 6, 8, 10
+reduce(*, [2, 3, 5, 7])                   # = 210
+
+# list comprehension
+[addThree(i) for i=[2, 3, 5, 7]]          # = 5, 6, 8, 10
+[addThree(i) for i in [2, 3, 5, 7]]       # = 5, 6, 8, 10
+
+# Julia does not check types statically but has a type system
+# we can define types, just we need to code functions outside of the type block (unlike java, c#)
+type Animal
+  age::Int8
+  class::String
+end
+
+showAge = (a::Animal) -> println(a.age)
+harriet = animal(255, "Tortoise")
+showAge(harriet)                          # = 255
+
+# sub-types can only inherit from abstract types
+abstract Pet
+
+type Dog <: Pet
+  barkDecibel::Int32
+end
+
+bark = (d::Dog) -> println(string(fill("woof!", d.barkDecibel)...))
+terrier = Dog(4)
+bark(terrier)                             # = woof!woof!woof!woof!
+
 ```
