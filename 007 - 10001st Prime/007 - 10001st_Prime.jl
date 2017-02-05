@@ -27,4 +27,4 @@ function buildPrimes(count)
     return primes
 end
 
-println(buildPrimes(10000)[10000])
+println(buildPrimes(10000)[end])
