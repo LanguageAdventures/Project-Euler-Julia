@@ -7,7 +7,7 @@ function buildPrimes(count)
     function check(n)
         i = 1
         while i < slot
-            if primes[i]%n == 0
+            if n%primes[i] == 0
                 return false
             end
             i += 1
@@ -27,4 +27,4 @@ function buildPrimes(count)
     return primes
 end
 
-buildPrimes(16)
+println(buildPrimes(10000)[10000])
