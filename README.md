@@ -109,8 +109,8 @@ type Animal
 end
 
 showAge = (a::Animal) -> println(a.age)
-harriet = animal(255, "Tortoise")
-showAge(harriet)                          # = 255
+harriet = animal(175, "Tortoise")
+showAge(harriet)                          # = 175 
 
 # sub-types can only inherit from abstract types
 abstract Pet
